@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>Hello</p>
     <p>this is the add contact page</p>
   </div>
 </template>
