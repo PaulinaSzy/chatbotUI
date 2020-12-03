@@ -1,19 +1,21 @@
 # chatbotUI
 
-## Build Setup
+## Quickstart
 
 ```bash
+# run it in a project forlder, it will create a new folder in there
+$ git clone https://github.com/PaulinaSzy/chatbotUI
+
+# enter the folder
+$ cd chatbotUI
+
 # install dependencies
 $ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
+# [for deployment] generate static project
 $ npm run generate
 ```
 
