@@ -36,7 +36,7 @@
       </v-container>
     </v-main>
 
-    <v-footer :absolute="!fixed" app>
+    <v-footer app class="d-none d-sm-flex">
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -48,29 +48,29 @@ export default {
     return {
       clipped: false,
       drawer: false,
-      fixed: false,
+      fixed: true,
       items: [
         {
           icon: "mdi-apps",
           title: "Welcome",
-          to: "/"
+          to: "/",
         },
         {
           icon: "mdi-apps",
           title: "Contacts",
-          to: "/contacts"
+          to: "/contacts",
         },
         {
           icon: "mdi-chart-bubble",
           title: "Chat",
-          to: "/chat"
-        }
+          to: "/chat",
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Ghostify"
+      title: "Ghostify",
     };
-  }
+  },
 };
 </script>
