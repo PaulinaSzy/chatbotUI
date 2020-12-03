@@ -34,10 +34,10 @@ export default {
       participants: [
         {
           id: "user1",
-          name: "Ghost of Matteo",
+          name: "Ghost of Amy",
           imageUrl:
-            "https://avatars3.githubusercontent.com/u/1915989?s=230&v=4",
-        },
+            "https://aktivist.pl/wp-content/uploads/2015/04/Amy-Winehouse-1050x788.jpg"
+        }
       ], // the list of all the participant of the conversation. `name` is the user name, `id` is used to establish the author of a message, `imageUrl` is supposed to be the user avatar.
       titleImageUrl:
         "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
@@ -47,9 +47,9 @@ export default {
           type: "text",
           author: `user1`,
           data: {
-            text: `oh man so much stuff to do, i'm literally dead at this point`,
-          },
-        },
+            text: `oh man so much stuff to do, i'm literally dead at this point`
+          }
+        }
       ], // the list of the messages to show, can be paginated and adjusted dynamically
       newMessagesCount: 0,
       isChatOpen: true, // to determine whether the chat window should be open or closed
@@ -57,33 +57,33 @@ export default {
       colors: {
         header: {
           bg: "#34495e",
-          text: "#ecf0f1",
+          text: "#ecf0f1"
         },
         launcher: {
-          bg: "#34495e",
+          bg: "#34495e"
         },
         messageList: {
-          bg: "#2c3e50",
+          bg: "#2c3e50"
         },
         sentMessage: {
           bg: "#7f8c8d",
-          text: "#ecf0f1",
+          text: "#ecf0f1"
         },
         receivedMessage: {
           bg: "#95a5a6",
-          text: "#ecf0f1",
+          text: "#ecf0f1"
         },
         userInput: {
           bg: "#34495e",
-          text: "#ecf0f1",
+          text: "#ecf0f1"
         },
         userList: {
           bg: "#2c3e50",
-          text: "#ecf0f1",
-        },
+          text: "#ecf0f1"
+        }
       }, // specifies the color scheme for the component
       alwaysScrollToBottom: false, // when set to true always scrolls the chat to the bottom when new events are in (new message, user starts typing...)
-      messageStyling: true, // enables *bold* /emph/ _underline_ and such (more info at github.com/mattezza/msgdown)
+      messageStyling: true // enables *bold* /emph/ _underline_ and such (more info at github.com/mattezza/msgdown)
     };
   },
   methods: {
@@ -95,7 +95,7 @@ export default {
         this.onMessageWasSent({
           author: "support",
           type: "text",
-          data: { text },
+          data: { text }
         });
       }
     },
@@ -119,11 +119,11 @@ export default {
       console.log("Emit typing event");
     },
     editMessage(message) {
-      const m = this.messageList.find((m) => m.id === message.id);
+      const m = this.messageList.find(m => m.id === message.id);
       m.isEdited = true;
       m.data.text = message.data.text;
-    },
-  },
+    }
+  }
 };
 </script>
 

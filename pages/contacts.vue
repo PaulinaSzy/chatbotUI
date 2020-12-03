@@ -15,7 +15,7 @@
     <v-list subheader>
       <v-subheader>Recently accessed</v-subheader>
 
-      <v-list-item v-for="chat in recent" :key="chat.title">
+      <v-list-item v-for="chat in recent" :key="chat.title" :href="chat.href">
         <v-list-item-avatar>
           <v-img :alt="`${chat.title} avatar`" :src="chat.avatar"></v-img>
         </v-list-item-avatar>
@@ -23,7 +23,6 @@
         <v-list-item-content>
           <v-list-item-title v-text="chat.title"></v-list-item-title>
         </v-list-item-content>
-
         <v-list-item-icon>
           <v-icon :color="chat.active ? 'deep-purple accent-4' : 'grey'">
             mdi-message-outline
@@ -37,7 +36,7 @@
     <v-list subheader>
       <v-subheader>Other</v-subheader>
 
-      <v-list-item v-for="chat in previous" :key="chat.title">
+      <v-list-item v-for="chat in previous" :key="chat.title" :href="chat.href">
         <v-list-item-avatar>
           <v-img :alt="`${chat.title} avatar`" :src="chat.avatar"></v-img>
         </v-list-item-avatar>
@@ -58,26 +57,30 @@ export default {
         active: true,
         avatar:
           "https://aktivist.pl/wp-content/uploads/2015/04/Amy-Winehouse-1050x788.jpg",
-        title: "Amy Winehouse"
+        title: "Amy Winehouse",
+        href: "/chat"
       },
       {
-        active: true,
         avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-        title: "Mike Carlson"
+        title: "Mike Carlson",
+        href: "/chat"
       },
       {
         avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-        title: "Cindy Baker"
+        title: "Cindy Baker",
+        href: "/chat"
       },
       {
         avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-        title: "Ali Connors"
+        title: "Ali Connors",
+        href: "/chat"
       }
     ],
     previous: [
       {
         title: "Travis Howard",
-        avatar: "https://cdn.vuetifyjs.com/images/lists/5.jpg"
+        avatar: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+        href: "/chat"
       }
     ]
   })

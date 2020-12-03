@@ -51,26 +51,26 @@ export default {
       fixed: true,
       items: [
         {
-          icon: "mdi-apps",
+          icon: "mdi-home",
           title: "Welcome",
-          to: "/",
+          to: "/"
         },
         {
           icon: "mdi-apps",
           title: "Contacts",
-          to: "/contacts",
+          to: "/contacts"
         },
         {
           icon: "mdi-chart-bubble",
           title: "Chat",
-          to: "/chat",
-        },
+          to: "/chat"
+        }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Ghostify",
+      title: "Ghostify"
     };
-  },
+  }
 };
 </script>
