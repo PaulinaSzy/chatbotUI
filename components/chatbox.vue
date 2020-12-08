@@ -42,7 +42,11 @@ export default {
       titleImageUrl:
         "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
       messageList: [
-        { type: "text", author: `me`, data: { text: `hey how are you?` } },
+        {
+          type: "text",
+          author: `me`,
+          data: { text: `Hey Amy? How are you doing?` }
+        },
         {
           type: "text",
           author: `user1`,
