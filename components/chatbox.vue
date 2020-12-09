@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "app",
   data() {
@@ -106,7 +108,14 @@ export default {
     onMessageWasSent(message) {
       // called when the user sends a message
       this.messageList = [...this.messageList, message];
+      axios.post("http://0.0.0.0:5000/reply", message).then(response => {
+        console.log(response);
+      });
     },
+
+    //   this.$http.get('http://api.openweathermap.org/data/2.5/find?q=stockholm&type=like&appid=[API KEY]').then((data) => {
+    // this.weather = data;
+    // console.log(this.weather);
     openChat() {
       // called when the user clicks on the fab button to open the chat
       this.newMessagesCount = 0;
