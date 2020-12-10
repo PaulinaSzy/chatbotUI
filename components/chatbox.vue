@@ -105,12 +105,28 @@ export default {
         });
       }
     },
+
     onMessageWasSent(message) {
-      // called when the user sends a message
+      console.log(message);
       this.messageList = [...this.messageList, message];
-      axios.post("http://0.0.0.0:5000/reply", message).then(response => {
-        console.log(response);
-      });
+      this.getbotreply(message);
+    },
+
+    getbotreply(message) {
+      axios
+        .post("http://0.0.0.0:5000/reply", message)
+        .then(response => {
+          var reply = response.data["message"];
+          console.log("reply", reply, typeof reply);
+          // var msg = { author: "support", type: "text", data: { reply } };
+          // console.log("reply object", msg);
+          this.sendMessage(reply);
+          // this.messageList = [...this.messageList, msg];
+          // return response.data["message"];
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
 
     //   this.$http.get('http://api.openweathermap.org/data/2.5/find?q=stockholm&type=like&appid=[API KEY]').then((data) => {
