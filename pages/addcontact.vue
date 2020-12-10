@@ -132,7 +132,11 @@
     ></v-select>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column " cols="6">
-        <SocialMediaButton :value="smbutton.fb" @click.native="dialog1 = true">
+        <SocialMediaButton
+          :value="smbutton.fb"
+          imageurl="/media/images/v.png"
+          @click.native="dialog1 = true"
+        >
         </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">

@@ -6,13 +6,13 @@
     width="170"
     large
   >
-    <v-img
+    <!-- <v-img
       contain
       height="60"
       src="/media/images/facebook.PNG"
       style="position: absolute"
     >
-    </v-img>
+    </v-img> -->
     {{ value }}
   </v-btn>
 </template>
