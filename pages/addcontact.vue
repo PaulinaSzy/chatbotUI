@@ -40,11 +40,11 @@
       </v-col>
     </v-row>
 
-    <v-fab-transition>
+    <!-- <v-fab-transition>
       <v-btn v-show="!hidden" color="pink" dark absolute bottom right>
         <v-icon>mdi-content-save</v-icon>
       </v-btn>
-    </v-fab-transition>
+    </v-fab-transition> -->
   </div>
 </template>
 
