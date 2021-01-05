@@ -1,16 +1,15 @@
 <template>
   <v-card class="mx-auto" max-width="500">
-    <!-- <v-toolbar color="deep-purple accent-4" dark>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-toolbar color="accent" dark>
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
       <v-toolbar-title>New Chat</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-    </v-toolbar> -->
+    </v-toolbar>
 
     <v-list subheader>
       <v-subheader>Recently accessed</v-subheader>
@@ -24,7 +23,7 @@
           <v-list-item-title v-text="chat.title"></v-list-item-title>
         </v-list-item-content>
         <v-list-item-icon>
-          <v-icon :color="chat.active ? 'deep-purple accent-4' : 'grey'">
+          <v-icon :color="chat.active ? 'accent' : 'grey'">
             mdi-message-outline
           </v-icon>
         </v-list-item-icon>
@@ -59,22 +58,22 @@ export default {
           "https://aktivist.pl/wp-content/uploads/2015/04/Amy-Winehouse-1050x788.jpg",
         title: "Amy Winehouse",
         href: "/chat"
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-        title: "Mike Carlson",
-        href: "/chat"
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-        title: "Cindy Baker",
-        href: "/chat"
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-        title: "Ali Connors",
-        href: "/chat"
       }
+      // {
+      //   avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+      //   title: "Mike Carlson",
+      //   href: "/chat"
+      // },
+      // {
+      //   avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+      //   title: "Cindy Baker",
+      //   href: "/chat"
+      // },
+      // {
+      //   avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
+      //   title: "Ali Connors",
+      //   href: "/chat"
+      // }
     ],
     previous: [
       {

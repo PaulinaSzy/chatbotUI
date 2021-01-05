@@ -29,6 +29,17 @@
 <script>
 import axios from "axios";
 
+import VueRouter from "vue-router";
+
+const router = new VueRouter({
+  routes: [
+    {
+      path: "/contacts",
+      name: "contacts"
+    }
+  ]
+});
+
 export default {
   name: "app",
   data() {
@@ -93,36 +104,35 @@ export default {
     };
   },
   methods: {
-    sendMessage(text) {
+    //
+    displayNewMessage(text) {
       if (text.length > 0) {
         this.newMessagesCount = this.isChatOpen
           ? this.newMessagesCount
           : this.newMessagesCount + 1;
-        this.onMessageWasSent({
-          author: "support",
+        this.addMessage({
+          author: "user1",
           type: "text",
           data: { text }
         });
       }
     },
-
+    // method is invoked by the chat component
     onMessageWasSent(message) {
-      console.log(message);
+      this.addMessage(message);
+      this.getBotReply(message);
+    },
+    //
+    addMessage(message) {
       this.messageList = [...this.messageList, message];
-      this.getbotreply(message);
     },
 
-    getbotreply(message) {
+    getBotReply(message) {
       axios
         .post("http://0.0.0.0:5000/reply", message)
         .then(response => {
           var reply = response.data["message"];
-          console.log("reply", reply, typeof reply);
-          // var msg = { author: "support", type: "text", data: { reply } };
-          // console.log("reply object", msg);
-          this.sendMessage(reply);
-          // this.messageList = [...this.messageList, msg];
-          // return response.data["message"];
+          this.displayNewMessage(reply);
         })
         .catch(err => {
           console.log(err);
@@ -137,8 +147,8 @@ export default {
       this.newMessagesCount = 0;
     },
     closeChat() {
-      // called when the user clicks on the botton to close the chat
-      // DO NOTHING because our page should always have the chat
+      // this.$router.push("contacts");
+      this.$router.push({ name: "contacts" });
     },
     handleScrollToTop() {
       // called when the user scrolls message list to top
