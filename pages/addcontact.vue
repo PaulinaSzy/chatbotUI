@@ -29,7 +29,8 @@
 
     <v-row>
       <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.fb"> </SocialMediaButton>
+        <SocialMediaButton :value="smbutton.fb" imageurl="/media/images/v.png">
+        </SocialMediaButton>
       </v-col>
       <v-col class="d-flex flex-column" cols="6">
         <SocialMediaButton :value="smbutton.insta"> </SocialMediaButton>
