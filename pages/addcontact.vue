@@ -27,16 +27,28 @@
       @blur="$v.select.$touch()"
     ></v-select>
 
-    <v-row no-gutters>
-      <v-col>
-        <v-btn block class="ma-1" height="175"> Facebook </v-btn>
-        <v-btn block class="ma-1" height="175"> Instagram </v-btn>
-        <v-btn block class="ma-1" height="175"> Whatsapp </v-btn>
+    <v-row>
+      <v-col class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.fb"> </SocialMediaButton>
       </v-col>
-      <v-col>
-        <v-btn block class="ma-1" height="175"> Telegram </v-btn>
-        <v-btn block class="ma-1" height="175"> Twitter </v-btn>
-        <v-btn block class="ma-1" height="175">other </v-btn>
+      <v-col class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.insta"> </SocialMediaButton>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.twit"> </SocialMediaButton>
+      </v-col>
+      <v-col class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.wa"> </SocialMediaButton>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.tel"> </SocialMediaButton>
+      </v-col>
+      <v-col class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.oth"> </SocialMediaButton>
       </v-col>
     </v-row>
 
@@ -49,7 +61,23 @@
 </template>
 
 <script>
-export default {};
+import SocialMediaButton from "../components/SocialMediaButton.vue";
+export default {
+  components: { SocialMediaButton },
+  data() {
+    return {
+      changeBackgroundColor: true,
+      smbutton: {
+        fb: "Facebook",
+        insta: "Instagram",
+        wa: "Whatsapp",
+        twit: "Twitter",
+        tel: "Telegram",
+        oth: "Other"
+      }
+    };
+  }
+};
 </script>
 
 <style></style>
