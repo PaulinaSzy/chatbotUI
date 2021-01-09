@@ -8,7 +8,7 @@
         <v-card-text>
           <p>We let you get in touch with people who passed away</p>
         </v-card-text>
-        <v-img src="/media/images/hug.png"> </v-img>
+        <v-img src="/media/images/v.png"> </v-img>
         <!-- <v-img
           lazy-src="https://picsum.photos/id/11/10/6"
           src="https://www.lancaster.ac.uk/media/lancaster-university/content-assets/images/news/hero-images/deathinfacebookageweb.jpg"

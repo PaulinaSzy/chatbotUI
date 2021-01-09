@@ -2,7 +2,7 @@
   <v-btn
     :color="changeBackgroundColor ? 'accent' : 'primary'"
     @click="changeBackgroundColor = !changeBackgroundColor"
-    class="ma-5 white--text font-weight-bold"
+    class="button ma-5 white--text font-weight-bold"
     height="150"
     large
   >
@@ -25,4 +25,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.button {
+  background-image: url("/media/images/v.png");
+}
+</style>
