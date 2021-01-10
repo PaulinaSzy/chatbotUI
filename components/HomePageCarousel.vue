@@ -5,7 +5,7 @@
         <div class="justify-center" style="margin-bottom:60px">
           {{ slides[i] }}
           <div id="button" class="text-center mt-4">
-            <v-btn v-show="i == 2">Start</v-btn>
+            <v-btn v-show="i == 2" to="/contacts">Start</v-btn>
           </div>
         </div>
       </v-row>

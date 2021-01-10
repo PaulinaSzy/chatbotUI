@@ -1,28 +1,19 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <transition name="fade">
-        <div v-show="elementVisible" class="popup">
-          <v-card class="popupcontent">
-            <v-card-title class="headline">
-              Welcome to Ghostify
-            </v-card-title>
-            <v-card-text>
-              <p>We let you get in touch with people who passed away</p>
-            </v-card-text>
-            <v-img src="/media/images/bike.jpg"> </v-img>
-
-            <v-btn color="accent" nuxt to="/contacts">
-              Explore
-            </v-btn>
-          </v-card>
+  <div class="ma-2">
+    <transition name="fade">
+      <div v-show="elementVisible" class="popup justify-center">
+        <div class="popupcontent">
+          <!-- <v-card-title class="headline">
+            Welcome to Soulify
+          </v-card-title> -->
+          <v-img src="/media/images/bike.jpg"> </v-img>
         </div>
-      </transition>
-      <div>
-        <HomePageCarousel> </HomePageCarousel>
       </div>
-    </v-col>
-  </v-row>
+    </transition>
+    <div>
+      <HomePageCarousel> </HomePageCarousel>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -59,15 +50,15 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(230, 56, 56, 0.2);
+  background-color: rgba(49, 43, 43, 0.6);
   width: 100vw;
   height: 100vh;
   z-index: 10;
 }
 .popupcontent {
   position: absolute;
-  width: 600px;
-  height: auto;
+  width: 500px;
+  height: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
