@@ -115,7 +115,7 @@
     ></v-select>
     <v-row>
       <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton @click.stop="dialog = true" :value="smbutton.fb">
+        <SocialMediaButton :value="smbutton.fb" imageurl="/media/images/v.png">
         </SocialMediaButton>
       </v-col>
       <v-col class="d-flex flex-column" cols="6">
