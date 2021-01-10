@@ -1,8 +1,13 @@
 <template>
-  <v-carousel :show-arrows="false">
-    <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
+  <v-carousel :show-arrows="false" height="calc(100vh-80px)">
+    <v-carousel-item
+      v-for="(item, i) in items"
+      :key="i"
+      :src="item.src"
+      height="calc(100vh-80px)"
+    >
       <v-row class="fill-height" align="end" justify="center">
-        <div class="justify-center" style="margin-bottom:60px">
+        <div class="justify-center text-center mx-8 mb-16">
           {{ slides[i] }}
           <div id="button" class="text-center mt-4">
             <v-btn v-show="i == 2" to="/contacts">Start</v-btn>
