@@ -1,10 +1,10 @@
 <template>
   <v-btn
     :color="changeBackgroundColor ? 'accent' : 'primary'"
-    @click="changeBackgroundColor = !changeBackgroundColor"
     class="button ma-5 white--text font-weight-bold"
     height="150"
     large
+    @click.stop="dialog = true"
   >
     {{ value }}
   </v-btn>

@@ -1,26 +1,17 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to Ghostify
-        </v-card-title>
-        <v-card-text>
-          <p>We let you get in touch with people who passed away</p>
-        </v-card-text>
-        <v-img src="/media/images/v.png"> </v-img>
-        <!-- <v-img
-          lazy-src="https://picsum.photos/id/11/10/6"
-          src="https://www.lancaster.ac.uk/media/lancaster-university/content-assets/images/news/hero-images/deathinfacebookageweb.jpg"
-        ></v-img> -->
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="accent" nuxt to="/contacts">
-            Explore
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
+    <v-carousel :show-arrows="false" height="650px">
+      <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
+        <v-row class="fill-height" align="end" justify="center">
+          <div class="justify-center" style="margin-bottom:60px">
+            {{ slides[i] }}
+            <div id="button" class="text-center mt-4">
+              <v-btn>Start</v-btn>
+            </div>
+          </div>
+        </v-row>
+      </v-carousel-item>
+    </v-carousel>
   </v-row>
 </template>
 
@@ -32,6 +23,29 @@ export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+
+  name: "homeCarousel",
+
+  data() {
+    return {
+      items: [
+        {
+          src: "/media/images/instructions.jpg"
+        },
+        {
+          src: "/media/images/instructions.jpg"
+        },
+        {
+          src: "/media/images/instructions.jpg"
+        }
+      ],
+      slides: [
+        "Grieving over a lost one?",
+        "With Soulify you can get reconnect with the dead",
+        "So you never have to truly say goodbye..."
+      ]
+    };
   }
 };
 </script>
