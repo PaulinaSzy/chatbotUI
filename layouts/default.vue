@@ -69,6 +69,11 @@ export default {
           icon: "mdi-chart-bubble",
           title: "Add New Contact",
           to: "/addcontact"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "trials",
+          to: "/trial"
         }
       ],
       miniVariant: false,

@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-row no-gutters>
-      <!-- <v-file-input
-        accept="image/png, image/jpeg, image/bmp"
-        prepend-icon="mdi-Avatar"
-      ></v-file-input> -->
+      <v-btn class="mx-2" fab>
+        <v-icon>mdi-account-box-multiple</v-icon>
+      </v-btn>
+      <input type="file" id="file-upload" style="display:none" />
 
       <v-text-field label="Name" required></v-text-field>
     </v-row>
@@ -35,12 +35,13 @@
         <SocialMediaButton :value="smbutton.oth"> </SocialMediaButton>
       </v-col>
     </v-row>
-
-    <!-- <v-fab-transition>
-      <v-btn v-show="!hidden" color="pink" dark absolute bottom right>
-        <v-icon>mdi-content-save</v-icon>
-      </v-btn>
-    </v-fab-transition> -->
+    <div class="text-right">
+      <v-fab-transition>
+        <v-btn v-show="!hidden" color="pink" dark bottom right>
+          <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+      </v-fab-transition>
+    </div>
   </div>
 </template>
 
@@ -50,7 +51,11 @@ export default {
   components: { SocialMediaButton },
   data() {
     return {
-      changeBackgroundColor: true,
+      // changeBackgroundColor: true,
+      dialog: false,
+      notifications: false,
+      sound: true,
+      widgets: false,
       smbutton: {
         fb: "Facebook",
         insta: "Instagram",
