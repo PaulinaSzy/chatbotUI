@@ -37,7 +37,7 @@
     </v-row>
     <div class="text-right">
       <v-fab-transition>
-        <v-btn v-show="!hidden" color="pink" dark bottom right>
+        <v-btn color="pink" dark bottom right>
           <v-icon>mdi-content-save</v-icon>
         </v-btn>
       </v-fab-transition>
