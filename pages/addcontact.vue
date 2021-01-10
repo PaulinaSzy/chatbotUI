@@ -1,31 +1,14 @@
 <template>
   <div>
     <v-row no-gutters>
-      <v-file-input
-        :rules="rules"
+      <!-- <v-file-input
         accept="image/png, image/jpeg, image/bmp"
         prepend-icon="mdi-Avatar"
-      ></v-file-input>
+      ></v-file-input> -->
 
-      <v-text-field
-        v-model="name"
-        :error-messages="nameErrors"
-        :counter="10"
-        label="Name"
-        required
-        @input="$v.name.$touch()"
-        @blur="$v.name.$touch()"
-      ></v-text-field>
+      <v-text-field label="Name" required></v-text-field>
     </v-row>
-    <v-select
-      v-model="select"
-      :items="items"
-      :error-messages="selectErrors"
-      label="Relationship"
-      required
-      @change="$v.select.$touch()"
-      @blur="$v.select.$touch()"
-    ></v-select>
+    <v-select :items="items" label="Relationship" required></v-select>
 
     <v-row>
       <v-col class="d-flex flex-column" cols="6">
@@ -75,7 +58,8 @@ export default {
         twit: "Twitter",
         tel: "Telegram",
         oth: "Other"
-      }
+      },
+      items: ["Mum", "Dad", "Sister", "Brother", "Friend"]
     };
   }
 };
