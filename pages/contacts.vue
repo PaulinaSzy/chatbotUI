@@ -31,6 +31,7 @@
         </v-list-item>
       </v-list> -->
     </v-card>
+
     <v-btn class="add mx-2" fab dark color="accent" to="/addcontact">
       <v-icon dark>
         mdi-plus
