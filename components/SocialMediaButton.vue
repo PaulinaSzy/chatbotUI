@@ -6,6 +6,13 @@
     width="170"
     large
   >
+    <v-img
+      contain
+      height="60"
+      src="/media/images/facebook.PNG"
+      style="position: absolute"
+    >
+    </v-img>
     {{ value }}
   </v-btn>
 </template>
@@ -25,8 +32,4 @@ export default {
 };
 </script>
 
-<style>
-.button {
-  background-image: url("/media/images/v.png");
-}
-</style>
+<style></style>

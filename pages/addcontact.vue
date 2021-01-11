@@ -131,11 +131,11 @@
       @blur="$v.select.$touch()"
     ></v-select>
     <v-row>
-      <v-col class="d-flex flex-column " cols="6">
+      <v-col style="padding:0px" class="d-flex flex-column " cols="6">
         <SocialMediaButton :value="smbutton.fb" @click.native="dialog1 = true">
         </SocialMediaButton>
       </v-col>
-      <v-col class="d-flex flex-column" cols="6">
+      <v-col style="padding:0px" class="d-flex flex-column" cols="6">
         <SocialMediaButton
           :value="smbutton.insta"
           @click.native="dialog2 = true"
@@ -144,30 +144,45 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.twit">
-          imageurl="/media/images/twitter.png"
-        </SocialMediaButton>
+      <v-col style="padding:0px" class="d-flex flex-column" cols="6">
+        <SocialMediaButton :value="smbutton.twit"> </SocialMediaButton>
       </v-col>
-      <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.wa"> </SocialMediaButton>
+      <v-col style="padding:0px" class="d-flex flex-column" cols="6">
+        <SocialMediaButton
+          :value="smbutton.wa"
+          imgageUrl="/static/media/images/v.png"
+        >
+        </SocialMediaButton>
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="d-flex flex-column" cols="6">
+      <v-col style="padding:0px" class="d-flex flex-column" cols="6">
         <SocialMediaButton :value="smbutton.tel"> </SocialMediaButton>
       </v-col>
-      <v-col class="d-flex flex-column" cols="6">
+      <v-col style="padding:0px" class="d-flex flex-column" cols="6">
         <SocialMediaButton :value="smbutton.oth"> </SocialMediaButton>
       </v-col>
     </v-row>
-    <div class="text-right">
-      <v-fab-transition>
-        <v-btn v-show="!hidden" color="pink" dark bottom right>
-          <v-icon>mdi-content-save</v-icon>
-        </v-btn>
-      </v-fab-transition>
-    </div>
+    <v-row>
+      <v-col class="d-flex justify-center flex-row">
+        <div class="text-left">
+          <v-fab-transition>
+            <v-btn v-show="!hidden" color="pink" dark bottom>
+              Cancel
+            </v-btn>
+          </v-fab-transition>
+        </div>
+      </v-col>
+      <v-col class="d-flex justify-center flex-row">
+        <div class="text-right">
+          <v-fab-transition>
+            <v-btn v-show="!hidden" color="pink" dark bottom>
+              <v-icon>mdi-content-save</v-icon>
+            </v-btn>
+          </v-fab-transition>
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
