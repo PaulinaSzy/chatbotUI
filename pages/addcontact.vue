@@ -1,93 +1,110 @@
 <template>
   <div>
-    <v-row>
-      <v-dialog
-        v-model="dialog"
-        fullscreen
-        hide-overlay
-        transition="dialog-bottom-transition"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            Open Dialog
+    <!-- Dialog 1 -->
+    <v-dialog
+      v-model="dialog1"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <v-card>
+        <v-toolbar dark color="primary">
+          <v-btn icon dark @click="dialog1 = false">
+            <v-icon>mdi-close</v-icon>
           </v-btn>
-        </template>
-        <v-card>
-          <v-toolbar dark color="primary">
-            <v-btn icon dark @click="dialog = false">
-              <v-icon>mdi-close</v-icon>
+          <v-toolbar-title>Facebook</v-toolbar-title>
+          <v-spacer></v-spacer>
+        </v-toolbar>
+        <v-form>
+          <v-flex>
+            <v-autocomplete
+              v-model="searchString"
+              :disabled="isUpdating"
+              :items="people"
+              color="blue"
+              label="Search for friends"
+              item-text="name"
+              item-value="name"
+              clearable
+              append-icon="mdi-search"
+              :open-on-click="true"
+            >
+              <template slot="no-data">
+                <v-list-tile>
+                  <v-list-tile-title>
+                    Search for your contacts
+                  </v-list-tile-title>
+                </v-list-tile>
+              </template>
+
+              <!-- <template slot="selection" slot-scope="data">
+                <v-chip
+                  :selected="data.selected"
+                  close
+                  class=""
+                  @input="data.parent.selectItem(data.item)"
+                >
+                  <v-avatar>
+                    <img :src="data.item.avatar" />
+                  </v-avatar>
+                  {{ data.item.name }}
+                </v-chip>
+              </template> -->
+              <template slot="item" slot-scope="data">
+                <!--                   <template v-if="typeof data.item !== 'object'">
+                    <v-list-tile-content v-text="data.item"></v-list-tile-content>
+                  </template> -->
+                <template>
+                  <v-list-item-avatar
+                    :item="data.item.group == 'Friends'"
+                    :size="data.item.group == 'Friends' ? 50 : 40"
+                    class="rounded-circle"
+                    @click="dialog1 = false"
+                  >
+                    <img :src="data.item.avatar" />
+                  </v-list-item-avatar>
+                  <v-list-item-content>
+                    <v-list-item-title
+                      v-html="data.item.name"
+                      @click="dialog1 = false"
+                    ></v-list-item-title>
+                    <v-list-item-sub-title
+                      v-if="data.item.group == 'Friends'"
+                      v-html="data.item.subtitle"
+                    ></v-list-item-sub-title>
+                  </v-list-item-content>
+                </template>
+              </template>
+            </v-autocomplete>
+          </v-flex>
+        </v-form>
+      </v-card>
+    </v-dialog>
+    <!--- Dialog ends -->
+    <!-- Dialog 2 -->
+    <v-dialog
+      v-model="dialog2"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <v-card>
+        <v-toolbar dark color="primary">
+          <v-btn icon dark @click="dialog2 = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Facebook</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn dark text @click="dialog2 = false">
+              Save
             </v-btn>
-            <v-toolbar-title>Settings</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-              <v-btn dark text @click="dialog = false">
-                Save
-              </v-btn>
-            </v-toolbar-items>
-          </v-toolbar>
-          <v-list three-line subheader>
-            <v-subheader>User Controls</v-subheader>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>Content filtering</v-list-item-title>
-                <v-list-item-subtitle
-                  >Set the content filtering level to restrict apps that can be
-                  downloaded</v-list-item-subtitle
-                >
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>Password</v-list-item-title>
-                <v-list-item-subtitle
-                  >Require password for purchase or use password to restrict
-                  purchase</v-list-item-subtitle
-                >
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-          <v-divider></v-divider>
-          <v-list three-line subheader>
-            <v-subheader>General</v-subheader>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="notifications"></v-checkbox>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Notifications</v-list-item-title>
-                <v-list-item-subtitle
-                  >Notify me about updates to apps or games that I
-                  downloaded</v-list-item-subtitle
-                >
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="sound"></v-checkbox>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Sound</v-list-item-title>
-                <v-list-item-subtitle
-                  >Auto-update apps at any time. Data charges may
-                  apply</v-list-item-subtitle
-                >
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="widgets"></v-checkbox>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Auto-add widgets</v-list-item-title>
-                <v-list-item-subtitle
-                  >Automatically add home screen widgets</v-list-item-subtitle
-                >
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-dialog>
-    </v-row>
+          </v-toolbar-items>
+        </v-toolbar>
+      </v-card>
+    </v-dialog>
+    <!--- Dialog ends -->
+    <div class="text-h6 text-center">Add New Soul</div>
     <v-row no-gutters>
       <v-btn class="mx-2" fab>
         <v-icon>mdi-account-box-multiple</v-icon>
@@ -98,7 +115,7 @@
         v-model="name"
         :error-messages="nameErrors"
         :counter="10"
-        label="Name"
+        label="What was this soul's name?"
         required
         @input="$v.name.$touch()"
         @blur="$v.name.$touch()"
@@ -108,18 +125,22 @@
       v-model="select"
       :items="items"
       :error-messages="selectErrors"
-      label="Relationship"
+      label="How did you know her?"
       required
       @change="$v.select.$touch()"
       @blur="$v.select.$touch()"
     ></v-select>
     <v-row>
-      <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.fb" imageurl="/media/images/v.png">
+      <v-col class="d-flex justify-center " cols="6">
+        <SocialMediaButton :value="smbutton.fb" @click.native="dialog1 = true">
         </SocialMediaButton>
       </v-col>
       <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.insta"> </SocialMediaButton>
+        <SocialMediaButton
+          :value="smbutton.insta"
+          @click.native="dialog2 = true"
+        >
+        </SocialMediaButton>
       </v-col>
     </v-row>
     <v-row>
@@ -153,12 +174,18 @@ import SocialMediaButton from "../components/SocialMediaButton.vue";
 export default {
   components: { SocialMediaButton },
   data() {
+    let srcs = {
+      1: "https://randomuser.me/api/portraits/women/14.jpg",
+      2: "https://randomuser.me/api/portraits/women/6.jpg",
+      3: "https://randomuser.me/api/portraits/women/41.jpg",
+      4: "https://randomuser.me/api/portraits/women/23.jpg",
+      5: "https://randomuser.me/api/portraits/women/15.jpg"
+    };
     return {
-      // changeBackgroundColor: true,
-      dialog: false,
-      notifications: false,
-      sound: true,
-      widgets: false,
+      items: ["Family", "Friend", "Partner", "Other"],
+      changeBackgroundColor: true,
+      dialog1: false,
+      dialog2: false,
       smbutton: {
         fb: "Facebook",
         insta: "Instagram",
@@ -166,8 +193,55 @@ export default {
         twit: "Twitter",
         tel: "Telegram",
         oth: "Other"
-      }
+      },
+      searchString: "",
+      isUpdating: false,
+      people: [
+        { header: "Friends" },
+        {
+          name: "Catarina Allen",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[1]
+        },
+        {
+          name: "Stephan Hofmann",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[2]
+        },
+        {
+          name: "Roosa Kallionpaa",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[3]
+        },
+        {
+          name: "Miguel Aires",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[4]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        }
+      ]
     };
+  },
+  watch: {
+    isUpdating(val) {
+      if (val) {
+        setTimeout(() => (this.isUpdating = false), 3000);
+      }
+    }
+  },
+  methods: {
+    hello() {
+      console.log(this.searchString);
+    }
   }
 };
 </script>

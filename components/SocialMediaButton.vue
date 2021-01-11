@@ -1,8 +1,9 @@
 <template>
   <v-btn
     :color="changeBackgroundColor ? 'accent' : 'primary'"
-    class="button ma-5 white--text font-weight-bold"
-    height="150"
+    class="button white--text font-weight-bold"
+    height="170"
+    width="170"
     large
   >
     {{ value }}
