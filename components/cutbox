@@ -1,0 +1,74 @@
+#
+<template>
+  <div>
+    <v-dialog fullscreen v-model="show" max-width="500px">
+      <v-card>
+        <v-card-actions>
+          <v-btn color="primary" flat @click.stop="show = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-btn
+      :color="changeBackgroundColor ? 'accent' : 'primary'"
+      class="button ma-5 white—text font-weight-bold"
+      height="150"
+      large
+      @click="showSocialSignup = true"
+    >
+      {{ value }}
+    </v-btn>
+  </div>
+</template>
+
+//
+<script>
+// export default {
+//   data() {
+//     return {
+//       // changeBackgroundColor: false
+//     };
+//   },
+//   props: {
+//     value: Boolean
+//   },
+//   computed: {
+//     show: {
+//       get() {
+//         return this.value;
+//       },
+//       set(value) {
+//         this.$emit(“input”, value);
+//       }
+//     }
+//   }
+// };
+//
+</script>
+
+<script>
+export default {
+  props: {
+    value: {
+      type: String
+    },
+    computed: {
+      show: {
+        get() {
+          return this.visible;
+        },
+        set(value) {
+          if (!value) {
+            this.$emit("close");
+          }
+        }
+      }
+    }
+  }
+};
+</script>
+
+<style>
+.button {
+  background-image: url("/media/images/v.png");
+}
+</style>
