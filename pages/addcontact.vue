@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <!-- Dialog 1 -->
     <v-dialog
       v-model="dialog1"
@@ -105,12 +106,15 @@
     </v-dialog>
     <!--- Dialog ends -->
     <div class="text-h6 text-center">Add New Soul</div>
+=======
+>>>>>>> 1e15a0929a8ce7c79bed01b489883b7da9abbf13
     <v-row no-gutters>
       <v-btn class="mx-2" fab>
         <v-icon>mdi-account-box-multiple</v-icon>
       </v-btn>
       <input type="file" id="file-upload" style="display:none" />
 
+<<<<<<< HEAD
       <v-text-field
         v-model="name"
         :error-messages="nameErrors"
@@ -130,6 +134,12 @@
       @change="$v.select.$touch()"
       @blur="$v.select.$touch()"
     ></v-select>
+=======
+      <v-text-field label="Name" required></v-text-field>
+    </v-row>
+    <v-select :items="items" label="Relationship" required></v-select>
+
+>>>>>>> 1e15a0929a8ce7c79bed01b489883b7da9abbf13
     <v-row>
       <v-col class="d-flex justify-center " cols="6">
         <SocialMediaButton :value="smbutton.fb" @click.native="dialog1 = true">
@@ -161,7 +171,7 @@
     </v-row>
     <div class="text-right">
       <v-fab-transition>
-        <v-btn v-show="!hidden" color="pink" dark bottom right>
+        <v-btn color="pink" dark bottom right>
           <v-icon>mdi-content-save</v-icon>
         </v-btn>
       </v-fab-transition>
@@ -194,6 +204,7 @@ export default {
         tel: "Telegram",
         oth: "Other"
       },
+<<<<<<< HEAD
       searchString: "",
       isUpdating: false,
       people: [
@@ -229,6 +240,9 @@ export default {
           avatar: srcs[5]
         }
       ]
+=======
+      items: ["Mum", "Dad", "Sister", "Brother", "Friend"]
+>>>>>>> 1e15a0929a8ce7c79bed01b489883b7da9abbf13
     };
   },
   watch: {

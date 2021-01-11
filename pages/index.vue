@@ -1,17 +1,5 @@
 <template>
   <v-row justify="center" align="center">
-    <v-carousel :show-arrows="false" height="650px">
-      <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
-        <v-row class="fill-height" align="end" justify="center">
-          <div class="justify-center" style="margin-bottom:60px">
-            {{ slides[i] }}
-            <div id="button" class="text-center mt-4">
-              <v-btn>Start</v-btn>
-            </div>
-          </div>
-        </v-row>
-      </v-carousel-item>
-    </v-carousel>
     <v-col cols="12" sm="8" md="6">
       <transition name="fade">
         <div v-show="elementVisible" class="popup">
@@ -31,19 +19,7 @@
         </div>
       </transition>
       <div>
-        <v-card>
-          <v-card-title class="headline">
-            Welcome to Ghostify
-          </v-card-title>
-          <v-card-text>
-            <p>We let you get in touch with people who passed away</p>
-          </v-card-text>
-          <v-img src="/media/images/bike.jpg"> </v-img>
-
-          <v-btn color="accent" nuxt to="/contacts">
-            Explore
-          </v-btn>
-        </v-card>
+        <HomePageCarousel> </HomePageCarousel>
       </div>
     </v-col>
   </v-row>
@@ -59,32 +35,13 @@ export default {
     VuetifyLogo
   },
 
-  name: "homeCarousel",
-
   data() {
     return {
-      elementVisible: true,
-      items: [
-        {
-          src: "/media/images/instructions.jpg"
-        },
-        {
-          src: "/media/images/instructions.jpg"
-        },
-        {
-          src: "/media/images/instructions.jpg"
-        }
-      ],
-      slides: [
-        "Grieving over a lost one?",
-        "With Soulify you can get reconnect with the dead",
-        "So you never have to truly say goodbye..."
-      ],
-
-      created() {
-        setTimeout(() => (this.elementVisible = false), 3000);
-      }
+      elementVisible: true
     };
+  },
+  created() {
+    setTimeout(() => (this.elementVisible = false), 3000);
   }
 };
 </script>
