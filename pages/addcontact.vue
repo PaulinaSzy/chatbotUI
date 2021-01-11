@@ -68,10 +68,10 @@
                       v-html="data.item.name"
                       @click="dialog1 = false"
                     ></v-list-item-title>
-                    <v-list-item-sub-title
+                    <v-list-item-subtitle
                       v-if="data.item.group == 'Friends'"
                       v-html="data.item.subtitle"
-                    ></v-list-item-sub-title>
+                    ></v-list-item-subtitle>
                   </v-list-item-content>
                 </template>
               </template>
@@ -154,7 +154,7 @@
       <v-col class="d-flex justify-center flex-row">
         <div class="text-left">
           <v-fab-transition>
-            <v-btn color="pink" dark bottom>
+            <v-btn to="contacts" color="pink" dark bottom>
               Cancel
             </v-btn>
           </v-fab-transition>
