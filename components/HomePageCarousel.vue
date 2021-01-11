@@ -26,13 +26,13 @@ export default {
     return {
       items: [
         {
-          src: "/media/images/instructions.jpg"
+          src: "/media/images/instructions1.PNG"
         },
         {
-          src: "/media/images/instructions.jpg"
+          src: "/media/images/instructions2.PNG"
         },
         {
-          src: "/media/images/instructions.jpg"
+          src: "/media/images/instructions3.PNG"
         }
       ],
       slides: [

@@ -1,12 +1,12 @@
-<template>
-  <div class="ma-2">
+<template class="ma-0 pa-0">
+  <div class="ma-0 pa-0">
     <transition name="fade">
       <div v-show="elementVisible" class="popup justify-center">
         <div class="popupcontent">
           <!-- <v-card-title class="headline">
             Welcome to Soulify
           </v-card-title> -->
-          <v-img src="/media/images/bike.jpg"> </v-img>
+          <v-img src="/media/images/soulify.GIF"> </v-img>
         </div>
       </div>
     </transition>
@@ -50,7 +50,6 @@ export default {
 .popupcontent {
   position: absolute;
   width: 500px;
-  height: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
