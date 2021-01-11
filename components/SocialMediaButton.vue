@@ -1,13 +1,16 @@
 <template>
   <v-btn
-    :style="{ 'background-image': 'url(' + imageurl + ')' }"
+    :style="{
+      'background-image': 'url(' + imageurl + ')',
+      'background-position': 'center',
+      'background-size': 'cover'
+    }"
     :color="changeBackgroundColor ? 'accent' : 'primary'"
     @click="changeBackgroundColor = !changeBackgroundColor"
     class="button ma-5 white--text font-weight-bold"
     height="150"
     large
   >
-    {{ value }}
   </v-btn>
 </template>
 
@@ -19,9 +22,6 @@ export default {
     };
   },
   props: {
-    value: {
-      type: String
-    },
     imageurl: {
       type: String
     }

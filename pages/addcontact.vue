@@ -117,16 +117,14 @@
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column " cols="6">
         <SocialMediaButton
-          :value="smbutton.fb"
-          imageurl="/media/images/v.png"
+          imageurl="/media/images/facebook.PNG"
           @click.native="dialog1 = true"
         >
         </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
         <SocialMediaButton
-          :value="smbutton.insta"
-          imageurl="/media/images/v.png"
+          imageurl="/media/images/instagram.PNG"
           @click.native="dialog2 = true"
         >
         </SocialMediaButton>
@@ -134,23 +132,22 @@
     </v-row>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton
-          :value="smbutton.twit"
-          imageurl="/media/images/v.png"
-        >
+        <SocialMediaButton imageurl="/media/images/whatsapp.PNG">
         </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.wa" imageurl="/media/images/v.png">
+        <SocialMediaButton imageurl="/media/images/twitter.PNG">
         </SocialMediaButton>
       </v-col>
     </v-row>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.tel"> </SocialMediaButton>
+        <SocialMediaButton imageurl="/media/images/messenger.PNG">
+        </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.oth"> </SocialMediaButton>
+        <SocialMediaButton imageurl="/media/images/telegram.PNG">
+        </SocialMediaButton>
       </v-col>
     </v-row>
     <v-row>
@@ -193,14 +190,6 @@ export default {
       changeBackgroundColor: true,
       dialog1: false,
       dialog2: false,
-      smbutton: {
-        fb: "Facebook",
-        insta: "Instagram",
-        wa: "Whatsapp",
-        twit: "Twitter",
-        tel: "Telegram",
-        oth: "Other"
-      },
       searchString: "",
       isUpdating: false,
       people: [
