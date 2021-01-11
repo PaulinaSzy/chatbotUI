@@ -45,10 +45,10 @@
                   @input="data.parent.selectItem(data.item)"
                 >
                   <v-avatar>
-                    <img :src="data.item.avatar" />
-                  </v-avatar>
+                    <img tar>
                   {{ data.item.name }}
-                </v-chip>
+                </v-chip>:src="data.item.avatar" />
+                  </v-ava
               </template> -->
               <template slot="item" slot-scope="data">
                 <!--                   <template v-if="typeof data.item !== 'object'">
@@ -111,25 +111,9 @@
       </v-btn>
       <input type="file" id="file-upload" style="display:none" />
 
-      <v-text-field
-        v-model="name"
-        :error-messages="nameErrors"
-        :counter="10"
-        label="What was this soul's name?"
-        required
-        @input="$v.name.$touch()"
-        @blur="$v.name.$touch()"
-      ></v-text-field>
+      <v-text-field label="What was this soul's name?" required></v-text-field>
     </v-row>
-    <v-select
-      v-model="select"
-      :items="items"
-      :error-messages="selectErrors"
-      label="How did you know her?"
-      required
-      @change="$v.select.$touch()"
-      @blur="$v.select.$touch()"
-    ></v-select>
+    <v-select :items="items" label="How did you know her?" required></v-select>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column " cols="6">
         <SocialMediaButton
@@ -142,6 +126,7 @@
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
         <SocialMediaButton
           :value="smbutton.insta"
+          imageurl="/media/images/v.png"
           @click.native="dialog2 = true"
         >
         </SocialMediaButton>
@@ -149,13 +134,14 @@
     </v-row>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.twit"> </SocialMediaButton>
+        <SocialMediaButton
+          :value="smbutton.twit"
+          imageurl="/media/images/v.png"
+        >
+        </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton
-          :value="smbutton.wa"
-          imgageUrl="/static/media/images/v.png"
-        >
+        <SocialMediaButton :value="smbutton.wa" imageurl="/media/images/v.png">
         </SocialMediaButton>
       </v-col>
     </v-row>
@@ -171,7 +157,7 @@
       <v-col class="d-flex justify-center flex-row">
         <div class="text-left">
           <v-fab-transition>
-            <v-btn v-show="!hidden" color="pink" dark bottom>
+            <v-btn color="pink" dark bottom>
               Cancel
             </v-btn>
           </v-fab-transition>
@@ -180,7 +166,7 @@
       <v-col class="d-flex justify-center flex-row">
         <div class="text-right">
           <v-fab-transition>
-            <v-btn v-show="!hidden" color="pink" dark bottom>
+            <v-btn color="pink" dark bottom>
               <v-icon>mdi-content-save</v-icon>
             </v-btn>
           </v-fab-transition>
