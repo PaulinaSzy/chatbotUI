@@ -145,7 +145,9 @@
     </v-row>
     <v-row>
       <v-col class="d-flex flex-column" cols="6">
-        <SocialMediaButton :value="smbutton.twit"> </SocialMediaButton>
+        <SocialMediaButton :value="smbutton.twit">
+          imageurl="/media/images/twitter.png"
+        </SocialMediaButton>
       </v-col>
       <v-col class="d-flex flex-column" cols="6">
         <SocialMediaButton :value="smbutton.wa"> </SocialMediaButton>
