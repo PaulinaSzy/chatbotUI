@@ -24,12 +24,9 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer> -->
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
 
-      <v-toolbar-title v-text="title" href="/" />
-      <v-spacer />
-    </v-app-bar>
+    <!-- <v-main class="ma-0 pa-0">
+      <v-container class="ma-0 pa-0"> -->
     <v-main>
       <v-container>
         <nuxt />

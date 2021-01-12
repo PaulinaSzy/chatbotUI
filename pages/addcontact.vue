@@ -8,36 +8,39 @@
       transition="dialog-bottom-transition"
     >
       <v-card>
-        <v-toolbar dark color="primary">
+        <v-toolbar color="accent" dark>
           <v-btn icon dark @click="dialog1 = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>Facebook</v-toolbar-title>
+          <v-toolbar-title>Messenger</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
+
         <v-form>
           <v-flex>
-            <v-autocomplete
-              v-model="searchString"
-              :disabled="isUpdating"
-              :items="people"
-              color="blue"
-              label="Search for friends"
-              item-text="name"
-              item-value="name"
-              clearable
-              append-icon="mdi-search"
-              :open-on-click="true"
-            >
-              <template slot="no-data">
-                <v-list-tile>
-                  <v-list-tile-title>
-                    Search for your contacts
-                  </v-list-tile-title>
-                </v-list-tile>
-              </template>
+            <v-toolbar color="primary" class="ma-2">
+              <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-              <!-- <template slot="selection" slot-scope="data">
+              <v-autocomplete
+                v-model="searchString"
+                :disabled="isUpdating"
+                :items="people"
+                label="Search for friends"
+                item-text="name"
+                item-value="name"
+                clearable
+                append-icon="mdi-search"
+                :open-on-click="true"
+              >
+                <template slot="no-data">
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      Search for your contacts
+                    </v-list-tile-title>
+                  </v-list-tile>
+                </template>
+
+                <!-- <template slot="selection" slot-scope="data">
                 <v-chip
                   :selected="data.selected"
                   close
@@ -50,34 +53,58 @@
                 </v-chip>:src="data.item.avatar" />
                   </v-ava
               </template> -->
-              <template slot="item" slot-scope="data">
-                <!--                   <template v-if="typeof data.item !== 'object'">
+                <template slot="item" slot-scope="data">
+                  <!--                   <template v-if="typeof data.item !== 'object'">
                     <v-list-tile-content v-text="data.item"></v-list-tile-content>
                   </template> -->
-                <template>
-                  <v-list-item-avatar
-                    :item="data.item.group == 'Friends'"
-                    :size="data.item.group == 'Friends' ? 50 : 40"
-                    class="rounded-circle"
-                    @click="dialog1 = false"
-                  >
-                    <img :src="data.item.avatar" />
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title
-                      v-html="data.item.name"
+                  <template>
+                    <v-list-item-avatar
+                      :item="data.item.group == 'Friends'"
+                      :size="data.item.group == 'Friends' ? 50 : 40"
+                      class="rounded-circle"
                       @click="dialog1 = false"
-                    ></v-list-item-title>
-                    <v-list-item-subtitle
-                      v-if="data.item.group == 'Friends'"
-                      v-html="data.item.subtitle"
-                    ></v-list-item-subtitle>
-                  </v-list-item-content>
+                    >
+                      <img :src="data.item.avatar" />
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title
+                        v-html="data.item.name"
+                        @click="dialog1 = false"
+                      ></v-list-item-title>
+                      <v-list-item-subtitle
+                        v-if="data.item.group == 'Friends'"
+                        v-html="data.item.subtitle"
+                      ></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </template>
                 </template>
-              </template>
-            </v-autocomplete>
+              </v-autocomplete>
+              <v-btn icon>
+                <v-icon>mdi-magnify</v-icon>
+              </v-btn>
+            </v-toolbar>
           </v-flex>
         </v-form>
+        <!-- generic list of non searched -->
+        <div class="ml-1 mr-1">
+          <v-list>
+            <v-list-item
+              v-for="person in people"
+              :key="person.name"
+              @click="dialog1 = false"
+            >
+              <v-list-item-avatar>
+                <v-img :src="person.avatar"></v-img>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title v-text="person.name"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-html="person.subtitle"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </div>
       </v-card>
     </v-dialog>
     <!--- Dialog ends -->
@@ -93,13 +120,8 @@
           <v-btn icon dark @click="dialog2 = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>Facebook</v-toolbar-title>
+          <v-toolbar-title>Twitter</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn dark text @click="dialog2 = false">
-              Save
-            </v-btn>
-          </v-toolbar-items>
         </v-toolbar>
       </v-card>
     </v-dialog>
@@ -113,20 +135,21 @@
 
       <v-text-field label="What was this soul's name?" required></v-text-field>
     </v-row>
-    <v-select :items="items" label="How did you know her?" required></v-select>
+    <v-select
+      :items="items"
+      label="How did you know this soul?"
+      required
+    ></v-select>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column " cols="6">
         <SocialMediaButton
-          imageurl="/media/images/facebook.PNG"
+          imageurl="/media/images/messenger.PNG"
           @click.native="dialog1 = true"
         >
         </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton
-          imageurl="/media/images/instagram.PNG"
-          @click.native="dialog2 = true"
-        >
+        <SocialMediaButton imageurl="/media/images/instagram.PNG">
         </SocialMediaButton>
       </v-col>
     </v-row>
@@ -136,13 +159,16 @@
         </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton imageurl="/media/images/twitter.PNG">
+        <SocialMediaButton
+          imageurl="/media/images/twitter.PNG"
+          @click.native="dialog2 = true"
+        >
         </SocialMediaButton>
       </v-col>
     </v-row>
     <v-row>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
-        <SocialMediaButton imageurl="/media/images/messenger.PNG">
+        <SocialMediaButton imageurl="/media/images/facebook.PNG">
         </SocialMediaButton>
       </v-col>
       <v-col style="padding:0px" class="d-flex flex-column" cols="6">
@@ -154,7 +180,7 @@
       <v-col class="d-flex justify-center flex-row">
         <div class="text-left">
           <v-fab-transition>
-            <v-btn to="contacts" color="pink" dark bottom>
+            <v-btn to="contacts" dark bottom color="accent">
               Cancel
             </v-btn>
           </v-fab-transition>
@@ -163,7 +189,7 @@
       <v-col class="d-flex justify-center flex-row">
         <div class="text-right">
           <v-fab-transition>
-            <v-btn color="pink" dark bottom>
+            <v-btn dark bottom color="secondary">
               <v-icon>mdi-content-save</v-icon>
             </v-btn>
           </v-fab-transition>
@@ -193,7 +219,6 @@ export default {
       searchString: "",
       isUpdating: false,
       people: [
-        { header: "Friends" },
         {
           name: "Catarina Allen",
           group: "Friends",
@@ -217,6 +242,54 @@ export default {
           group: "Friends",
           subtitle: "Meine Liebe",
           avatar: srcs[4]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
+        },
+        {
+          name: "Your mum lol",
+          group: "Friends",
+          subtitle: "Meine Liebe",
+          avatar: srcs[5]
         },
         {
           name: "Your mum lol",
