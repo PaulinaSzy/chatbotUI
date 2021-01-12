@@ -32,6 +32,14 @@
       </v-list> -->
     </v-card>
 
+    <!-- <v-alert class="alert" type="info">You have no Souls Add a new one</v-alert> -->
+
+    <div v-show="elementVisible" class="bubble pa-4 justify-center text-center">
+      <p class="font-weight-bold text-lg">
+        <span>You have no Souls...</span><span>Add a new one!</span>
+      </p>
+    </div>
+
     <v-btn class="add mx-2" fab dark color="accent" to="/addcontact">
       <v-icon dark>
         mdi-plus
@@ -51,8 +59,12 @@ export default {
         title: "Amy Winehouse",
         href: "/chat"
       }
-    ]
-  })
+    ],
+    elementVisible: false
+  }),
+  created() {
+    setTimeout(() => (this.elementVisible = true), 1500);
+  }
 };
 </script>
 
@@ -61,5 +73,62 @@ export default {
   position: fixed;
   bottom: 30px;
   right: 10px;
+}
+
+.add {
+  width: 200px;
+  height: 50px;
+  background-color: magenta;
+  padding: 15px;
+  text-align: center;
+  line-height: 50px;
+  animation: blink 1s linear infinite;
+  animation-delay: 3s;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+p span {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.alert {
+  position: fixed;
+}
+
+.bubble {
+  position: fixed;
+  width: 250px;
+  height: 120px;
+  padding: 0px;
+  background: #63d6b0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  bottom: 120px;
+  right: 30px;
+}
+
+.bubble:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 20px 0 20px 20px;
+  border-color: transparent #63d6b0;
+  display: block;
+  width: 0;
+  z-index: 1;
+  right: -20px;
+  top: 40px;
 }
 </style>
