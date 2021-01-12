@@ -3,9 +3,6 @@
     <transition name="fade">
       <div v-show="elementVisible" class="popup justify-center">
         <div class="popupcontent">
-          <!-- <v-card-title class="headline">
-            Welcome to Soulify
-          </v-card-title> -->
           <v-img src="/media/images/soulify.GIF"> </v-img>
         </div>
       </div>
