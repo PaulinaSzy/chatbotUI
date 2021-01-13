@@ -24,7 +24,7 @@
               <v-autocomplete
                 v-model="searchString"
                 :disabled="isUpdating"
-                :items="people"
+                :items="peoplefb"
                 label="Search for friends"
                 item-text="name"
                 item-value="name"
@@ -89,7 +89,7 @@
         <div class="ml-1 mr-1">
           <v-list>
             <v-list-item
-              v-for="person in people"
+              v-for="person in peoplefb"
               :key="person.name"
               @click="dialog1 = false"
             >
@@ -132,7 +132,7 @@
               <v-autocomplete
                 v-model="searchString"
                 :disabled="isUpdating"
-                :items="people"
+                :items="peopletw"
                 label="Search for friends"
                 item-text="name"
                 item-value="name"
@@ -197,7 +197,7 @@
         <div class="ml-1 mr-1">
           <v-list>
             <v-list-item
-              v-for="person in people"
+              v-for="person in peopletw"
               :key="person.name"
               @click="dialog2 = false"
             >
@@ -308,83 +308,163 @@ export default {
       dialog2: false,
       searchString: "",
       isUpdating: false,
-      people: [
+      peoplefb: [
         {
-          name: "Catarina Allen",
+          name: "Caroline Petterson",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last active 4h ago",
           avatar: srcs[1]
         },
         {
-          name: "Stephan Hofmann",
+          name: "Tania Ahmed",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Active",
           avatar: srcs[2]
         },
         {
-          name: "Roosa Kallionpaa",
+          name: "Right Person - name to be decided",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active a month ago",
           avatar: srcs[3]
         },
         {
-          name: "Miguel Aires",
+          name: "Miguel Silva",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active 2 min ago",
           avatar: srcs[4]
         },
         {
-          name: "Your mum lol",
+          name: "Jonas Johansson",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: " ",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Veronica Hofmann",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active Yesterday",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Stacy Andersson",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active 2 min ago",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Timothy Marshal",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active 4h ago",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "James Franklin",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active 6 min ago",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Olivia Moana",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Active",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Miriam Punzi",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active Yesterday",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Robert Falcasantos",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Last Active a week ago",
           avatar: srcs[5]
         },
         {
-          name: "Your mum lol",
+          name: "Paula Correia",
           group: "Friends",
-          subtitle: "Meine Liebe",
+          subtitle: "Active",
+          avatar: srcs[5]
+        }
+      ],
+      peopletw: [
+        {
+          name: "Olly Bradley",
+          group: "Friends",
+          subtitle: "@bradleyolly",
+          avatar: srcs[1]
+        },
+        {
+          name: "Rafael Sharp",
+          group: "Friends",
+          subtitle: "@sharpestinthehood",
+          avatar: srcs[2]
+        },
+        {
+          name: "Right Person - name to be decided",
+          group: "Friends",
+          subtitle: "@tobedecided",
+          avatar: srcs[3]
+        },
+        {
+          name: "Rhonda Massey",
+          group: "Friends",
+          subtitle: "@roundthatmassey",
+          avatar: srcs[4]
+        },
+        {
+          name: "Calum Burris",
+          group: "Friends",
+          subtitle: "@calum93burris",
+          avatar: srcs[5]
+        },
+        {
+          name: "Sid Major",
+          group: "Friends",
+          subtitle: "@majorbullsclassof86",
+          avatar: srcs[5]
+        },
+        {
+          name: "Diego Clarke",
+          group: "Friends",
+          subtitle: "@diegoclarke",
+          avatar: srcs[5]
+        },
+        {
+          name: "Kai Maddox",
+          group: "Friends",
+          subtitle: "@kai_maddox",
+          avatar: srcs[5]
+        },
+        {
+          name: "Mark Almond",
+          group: "Friends",
+          subtitle: "@almond_mark",
+          avatar: srcs[5]
+        },
+        {
+          name: "Justin Goodwin",
+          group: "Friends",
+          subtitle: "goodalwayswins",
+          avatar: srcs[5]
+        },
+        {
+          name: "Lillian Burrows",
+          group: "Friends",
+          subtitle: "@lillianburrows",
+          avatar: srcs[5]
+        },
+        {
+          name: "Abiha Vincent",
+          group: "Friends",
+          subtitle: "abihamaryvincent",
+          avatar: srcs[5]
+        },
+        {
+          name: "Malakai Preece",
+          group: "Friends",
+          subtitle: "malakaipreece",
           avatar: srcs[5]
         }
       ]
