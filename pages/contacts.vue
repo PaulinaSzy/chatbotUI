@@ -64,7 +64,8 @@ export default {
   }),
   created() {
     setTimeout(() => (this.elementVisible = true), 1500);
-  }
+  },
+  computed: { contacts() {} }
 };
 </script>
 
