@@ -7,7 +7,8 @@ export const mutations = {
   increment(state) {
     state.counter++;
   },
-  addcontact(state, contactdata) {
+  addContactToList(state, contactdata) {
     state.contacts.push(contactdata);
+    console.log(state.contacts);
   }
 };

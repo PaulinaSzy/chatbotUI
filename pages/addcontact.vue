@@ -223,9 +223,15 @@
       </v-btn>
       <input type="file" id="file-upload" style="display:none" />
 
-      <v-text-field label="What was this soul's name?" required></v-text-field>
+      <v-text-field
+        v-model="contact.name"
+        label="What was this soul's name?"
+        required
+      ></v-text-field>
     </v-row>
+    <!-- <v-select :value="$store.myValue" @input="setSelected" /> -->
     <v-select
+      v-model="contact.relation"
       :items="items"
       label="How did you know this soul?"
       required
@@ -266,11 +272,14 @@
         </SocialMediaButton>
       </v-col>
     </v-row>
+    <p>{{ contact.name }}</p>
+    <p>{{ contact.relation }}</p>
+
     <v-row>
       <v-col class="d-flex justify-center flex-row">
         <div class="text-left">
           <v-fab-transition>
-            <v-btn to="contacts" dark bottom color="accent">
+            <v-btn @click="showdata()" to="contacts" dark bottom color="accent">
               Cancel
             </v-btn>
           </v-fab-transition>
@@ -279,7 +288,7 @@
       <v-col class="d-flex justify-center flex-row">
         <div class="text-right">
           <v-fab-transition>
-            <v-btn dark bottom color="secondary">
+            <v-btn dark bottom color="secondary" @click="addContactToList">
               <v-icon>mdi-content-save</v-icon>
             </v-btn>
           </v-fab-transition>
@@ -290,6 +299,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 import SocialMediaButton from "../components/SocialMediaButton.vue";
 export default {
   components: { SocialMediaButton },
@@ -302,6 +313,10 @@ export default {
       5: "https://randomuser.me/api/portraits/women/15.jpg"
     };
     return {
+      contact: {
+        name: "",
+        relation: ""
+      },
       items: ["Family", "Friend", "Partner", "Other"],
       changeBackgroundColor: true,
       dialog1: false,
@@ -480,6 +495,13 @@ export default {
   methods: {
     hello() {
       console.log(this.searchString);
+    },
+    showdata() {
+      console.log(this.contact);
+    },
+    addContactToList: function() {
+      this.$store.commit("addContactToList", this.contact);
+      this.$router.push("/contacts");
     }
   }
 };
