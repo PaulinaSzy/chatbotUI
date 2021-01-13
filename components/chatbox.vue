@@ -73,29 +73,29 @@ export default {
       showTypingIndicator: "", // when set to a value matching the participant.id it shows the typing indicator for the specific user
       colors: {
         header: {
-          bg: "#34495e",
-          text: "#ecf0f1"
+          bg: "#ffffff",
+          text: "#292928"
         },
         launcher: {
-          bg: "#34495e"
+          bg: "#9aa3f0"
         },
         messageList: {
-          bg: "#2c3e50"
+          bg: "#9aa3f0"
         },
         sentMessage: {
-          bg: "#7f8c8d",
-          text: "#ecf0f1"
+          bg: "#292928",
+          text: "#ffffff"
         },
         receivedMessage: {
-          bg: "#95a5a6",
-          text: "#ecf0f1"
+          bg: "#ffffff",
+          text: "#292928"
         },
         userInput: {
-          bg: "#34495e",
-          text: "#ecf0f1"
+          bg: "#292928",
+          text: "#ffffff"
         },
         userList: {
-          bg: "#2c3e50",
+          bg: "#292928",
           text: "#ecf0f1"
         }
       }, // specifies the color scheme for the component

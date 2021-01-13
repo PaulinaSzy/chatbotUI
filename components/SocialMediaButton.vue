@@ -5,7 +5,7 @@
       'background-position': 'center',
       'background-size': 'cover'
     }"
-    :color="changeBackgroundColor ? 'accent' : 'primary'"
+    :color="changeBackgroundColor ? 'secondary' : 'primary'"
     @click="changeBackgroundColor = !changeBackgroundColor"
     class="button ma-5 white--text font-weight-bold"
     height="150"

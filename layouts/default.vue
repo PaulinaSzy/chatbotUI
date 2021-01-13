@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app light>
     <!-- <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -26,10 +26,11 @@
     </v-navigation-drawer> -->
     <v-app-bar :clipped-left="clipped" fixed app>
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
-
-      <v-toolbar-title v-text="title" href="/" />
+      <v-img src="/media/images/header.png"></v-img>
       <v-spacer />
     </v-app-bar>
+    <!-- <v-main class="ma-0 pa-0">
+      <v-container class="ma-0 pa-0"> -->
     <v-main>
       <v-container>
         <nuxt />

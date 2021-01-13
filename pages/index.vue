@@ -21,7 +21,7 @@ export default {
     };
   },
   created() {
-    setTimeout(() => (this.elementVisible = false), 3000);
+    setTimeout(() => (this.elementVisible = false), 4000);
   }
 };
 </script>
