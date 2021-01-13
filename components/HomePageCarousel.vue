@@ -6,10 +6,18 @@
       :src="item.src"
       height="100vh"
     >
-      <v-row class="fill-height" align="end" justify="center">
-        <div class="justify-center text-center mx-8 mb-16">
+      <v-row
+        class="fill-height"
+        align="end"
+        justify="center"
+        background="secondary"
+      >
+        <div
+          class="justify-center text-center mx-8 mb-16"
+          background="secondary"
+        >
           {{ slides[i] }}
-          <div id="button" class="text-center mt-4">
+          <div id="button" class="text-center mt-4" background="secondary">
             <v-btn v-show="i == 2" to="/contacts">Start</v-btn>
           </div>
         </div>

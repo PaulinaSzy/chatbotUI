@@ -116,19 +116,109 @@
       transition="dialog-bottom-transition"
     >
       <v-card>
-        <v-toolbar dark color="primary">
+        <v-toolbar color="accent" dark>
           <v-btn icon dark @click="dialog2 = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>Twitter</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
+
+        <v-form>
+          <v-flex>
+            <v-toolbar color="primary" class="ma-2">
+              <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
+
+              <v-autocomplete
+                v-model="searchString"
+                :disabled="isUpdating"
+                :items="people"
+                label="Search for friends"
+                item-text="name"
+                item-value="name"
+                clearable
+                append-icon="mdi-search"
+                :open-on-click="true"
+              >
+                <template slot="no-data">
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      Search for your contacts
+                    </v-list-tile-title>
+                  </v-list-tile>
+                </template>
+
+                <!-- <template slot="selection" slot-scope="data">
+                <v-chip
+                  :selected="data.selected"
+                  close
+                  class=""
+                  @input="data.parent.selectItem(data.item)"
+                >
+                  <v-avatar>
+                    <img tar>
+                  {{ data.item.name }}
+                </v-chip>:src="data.item.avatar" />
+                  </v-ava
+              </template> -->
+                <template slot="item" slot-scope="data">
+                  <!--                   <template v-if="typeof data.item !== 'object'">
+                    <v-list-tile-content v-text="data.item"></v-list-tile-content>
+                  </template> -->
+                  <template>
+                    <v-list-item-avatar
+                      :item="data.item.group == 'Friends'"
+                      :size="data.item.group == 'Friends' ? 50 : 40"
+                      class="rounded-circle"
+                      @click="dialog2 = false"
+                    >
+                      <img :src="data.item.avatar" />
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title
+                        v-html="data.item.name"
+                        @click="dialog2 = false"
+                      ></v-list-item-title>
+                      <v-list-item-subtitle
+                        v-if="data.item.group == 'Friends'"
+                        v-html="data.item.subtitle"
+                      ></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </template>
+                </template>
+              </v-autocomplete>
+              <v-btn icon>
+                <v-icon>mdi-magnify</v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-flex>
+        </v-form>
+        <!-- generic list of non searched -->
+        <div class="ml-1 mr-1">
+          <v-list>
+            <v-list-item
+              v-for="person in people"
+              :key="person.name"
+              @click="dialog2 = false"
+            >
+              <v-list-item-avatar>
+                <v-img :src="person.avatar"></v-img>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title v-text="person.name"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-html="person.subtitle"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </div>
       </v-card>
     </v-dialog>
     <!--- Dialog ends -->
-    <div class="text-h6 text-center">Add New Soul</div>
+    <div class="text-h6 text-center">Adding a New Soul</div>
     <v-row no-gutters>
-      <v-btn class="mx-2" fab>
+      <v-btn class="mx-2" color="accent" fab>
         <v-icon>mdi-account-box-multiple</v-icon>
       </v-btn>
       <input type="file" id="file-upload" style="display:none" />

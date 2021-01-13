@@ -38,7 +38,7 @@
 
     <div v-show="elementVisible" class="bubble pa-4 justify-center text-right">
       <p class="font-weight-bold text-lg">
-        <span>You have no Souls...</span>
+        <span class color="#fff">You have no Souls...</span>
       </p>
       <p>
         <span>Add a new one! </span>
@@ -116,6 +116,7 @@ p span {
   width: 250px;
   height: 120px;
   padding: 0px;
+  color: white;
   background: #b57ef2;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
