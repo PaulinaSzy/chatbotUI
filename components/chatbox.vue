@@ -27,6 +27,8 @@
 </template>
 
 <script>
+// :participants="participants"
+
 import axios from "axios";
 
 import VueRouter from "vue-router";
@@ -42,31 +44,37 @@ const router = new VueRouter({
 
 export default {
   name: "app",
+  props: {
+    participants: Array,
+    horizontal: Boolean,
+    titleImageUrl: String
+  },
   data() {
     return {
-      participants: [
-        {
-          id: "user1",
-          name: "Ghost of Amy",
-          imageUrl:
-            "https://aktivist.pl/wp-content/uploads/2015/04/Amy-Winehouse-1050x788.jpg"
-        }
-      ], // the list of all the participant of the conversation. `name` is the user name, `id` is used to establish the author of a message, `imageUrl` is supposed to be the user avatar.
-      titleImageUrl:
-        "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
+      // participants: [
+      //   {
+      //     // id: "user1",
+      //     name: "Ghost of Amy",
+      //     imageUrl:
+      //       "https://aktivist.pl/wp-content/uploads/2015/04/Amy-Winehouse-1050x788.jpg"
+      //   }
+      // ],
+      // the list of all the participant of the conversation. `name` is the user name, `id` is used to establish the author of a message, `imageUrl` is supposed to be the user avatar.
+      // titleImageUrl:
+      //   "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
       messageList: [
-        {
-          type: "text",
-          author: `me`,
-          data: { text: `Hey Amy? How are you doing?` }
-        },
-        {
-          type: "text",
-          author: `user1`,
-          data: {
-            text: `oh man so much stuff to do, i'm literally dead at this point`
-          }
-        }
+        // {
+        //   type: "text",
+        //   author: `me`,
+        //   data: { text: `Hey Amy? How are you doing?` }
+        // },
+        // {
+        //   type: "text",
+        //   author: `user1`,
+        //   data: {
+        //     text: `oh man so much stuff to do, i'm literally dead at this point`
+        //   }
+        // }
       ], // the list of the messages to show, can be paginated and adjusted dynamically
       newMessagesCount: 0,
       isChatOpen: true, // to determine whether the chat window should be open or closed
@@ -169,5 +177,8 @@ export default {
 <style>
 .chatbox .sc-chat-window {
   height: calc(100% - 50px);
+}
+.sc-header--img {
+  height: 56px;
 }
 </style>

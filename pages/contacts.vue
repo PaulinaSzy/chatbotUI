@@ -12,12 +12,19 @@
         </v-btn>
       </v-toolbar>
       <div class="ma-4">
-        <v-list subheader>
-          <v-list-item v-for="contact in contacts" :key="contact.name">
-            <!-- <v-list-item-avatar>
-              <v-img :alt="`${chat.title} avatar`" :src="chat.avatar"></v-img>
-            </v-list-item-avatar> -->
-
+        <v-list v-show="!contactListEmpty" subheader>
+          <v-list-item
+            v-for="contact in contacts"
+            :key="contact.name"
+            :to="{ path: '/chat/' + contact.name }"
+          >
+            <v-list-item-avatar>
+              <v-img :src="contact.imageurl"></v-img>
+            </v-list-item-avatar>
+            <!-- <router-link
+              :to="{ path: '/chat/' + contact.name }"
+              :key="contact.name"
+            > -->
             <v-list-item-content>
               <v-list-item-title v-text="contact.name"></v-list-item-title>
             </v-list-item-content>
@@ -26,6 +33,7 @@
                 mdi-message-outline
               </v-icon>
             </v-list-item-icon>
+            <!-- </router-link> -->
           </v-list-item>
         </v-list>
       </div>
@@ -34,14 +42,26 @@
     <!-- <v-alert class="alert" type="info">You have no Souls Add a new one</v-alert> -->
 
     <div
-      v-show="contactListEmpty && alertVisible"
-      class="bubble pa-4 justify-center text-right"
+      class="bubble pa-2 justify-center text-center"
+      v-if="contactListEmpty && alertVisible"
     >
-      <p class="font-weight-bold text-lg">
-        <span class color="#fff">You have no Souls...</span>
+      <p class="font-weight-bold mt-3">
+        You have no Souls...
       </p>
       <p>
-        <span>Add a new one! </span>
+        Add a new one!
+      </p>
+    </div>
+
+    <div
+      class="bubble pa-2 justify-center text-center"
+      v-if="!contactListEmpty && alertVisible"
+    >
+      <p class="font-weight-bold mt-3">
+        {{ contacts[contacts.length - 1].name }} is now ready
+      </p>
+      <p>
+        Start chatting with them!
       </p>
     </div>
 
@@ -74,10 +94,10 @@ export default {
         href: "/chat"
       }
     ],
-    alertVisible: true
+    alertVisible: false
   }),
   created() {
-    setTimeout(() => (this.alertVisible = true), 1500);
+    setTimeout(() => (this.alertVisible = true), 3000);
   },
   computed: {
     // ...mapState(["contacts"])
@@ -141,6 +161,8 @@ p span {
   border-radius: 10px;
   bottom: 120px;
   right: 30px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .bubble:after {

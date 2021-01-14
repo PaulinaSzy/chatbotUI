@@ -91,7 +91,7 @@
             <v-list-item
               v-for="person in peoplefb"
               :key="person.name"
-              @click="dialog1 = false"
+              @click="addPhoto(person.avatar, dialog1)"
             >
               <v-list-item-avatar>
                 <v-img :src="person.avatar"></v-img>
@@ -219,9 +219,19 @@
     <div class="text-h6 text-center">Adding a New Soul</div>
     <v-row no-gutters>
       <v-btn class="mx-2" color="accent" fab>
-        <v-icon>mdi-account-box-multiple</v-icon>
+        <v-icon v-show="!contact.imageurl">mdi-account-box-multiple</v-icon>
+        <v-list-item-avatar
+          style="height: 56px; min-width: 40px; width: 56px; margin-left: 0"
+          v-show="contact.imageurl"
+        >
+          <v-img :src="contact.imageurl"></v-img>
+        </v-list-item-avatar>
       </v-btn>
-      <input type="file" id="file-upload" style="display:none" />
+      <!-- <v-file-input
+        v-model="contact.imageurl"
+        truncate-length="15"
+      ></v-file-input> -->
+      <!-- <input  type="file" id="file-upload" style="display:none" /> -->
 
       <v-text-field
         v-model="contact.name"
@@ -272,8 +282,6 @@
         </SocialMediaButton>
       </v-col>
     </v-row>
-    <p>{{ contact.name }}</p>
-    <p>{{ contact.relation }}</p>
 
     <v-row>
       <v-col class="d-flex justify-center flex-row">
@@ -310,12 +318,21 @@ export default {
       2: "https://randomuser.me/api/portraits/women/6.jpg",
       3: "https://randomuser.me/api/portraits/women/41.jpg",
       4: "https://randomuser.me/api/portraits/women/23.jpg",
-      5: "https://randomuser.me/api/portraits/women/15.jpg"
+      5: "https://randomuser.me/api/portraits/women/15.jpg",
+      6: "https://randomuser.me/api/portraits/women/12.jpg",
+      7: "https://randomuser.me/api/portraits/women/1.jpg",
+      8: "https://randomuser.me/api/portraits/women/4.jpg",
+      9: "https://randomuser.me/api/portraits/women/9.jpg",
+      10: "https://randomuser.me/api/portraits/women/22.jpg",
+      11: "https://randomuser.me/api/portraits/women/38.jpg",
+      12: "https://randomuser.me/api/portraits/women/10.jpg",
+      13: "https://randomuser.me/api/portraits/women/33.jpg"
     };
     return {
       contact: {
         name: "",
-        relation: ""
+        relation: "",
+        imageurl: ""
       },
       items: ["Family", "Friend", "Partner", "Other"],
       changeBackgroundColor: true,
@@ -337,7 +354,7 @@ export default {
           avatar: srcs[2]
         },
         {
-          name: "Right Person - name to be decided",
+          name: "My Mum",
           group: "Friends",
           subtitle: "Last Active a month ago",
           avatar: srcs[3]
@@ -358,49 +375,49 @@ export default {
           name: "Veronica Hofmann",
           group: "Friends",
           subtitle: "Last Active Yesterday",
-          avatar: srcs[5]
+          avatar: srcs[6]
         },
         {
           name: "Stacy Andersson",
           group: "Friends",
           subtitle: "Last Active 2 min ago",
-          avatar: srcs[5]
+          avatar: srcs[7]
         },
         {
           name: "Timothy Marshal",
           group: "Friends",
           subtitle: "Last Active 4h ago",
-          avatar: srcs[5]
+          avatar: srcs[8]
         },
         {
           name: "James Franklin",
           group: "Friends",
           subtitle: "Last Active 6 min ago",
-          avatar: srcs[5]
+          avatar: srcs[9]
         },
         {
           name: "Olivia Moana",
           group: "Friends",
           subtitle: "Active",
-          avatar: srcs[5]
+          avatar: srcs[10]
         },
         {
           name: "Miriam Punzi",
           group: "Friends",
           subtitle: "Last Active Yesterday",
-          avatar: srcs[5]
+          avatar: srcs[11]
         },
         {
           name: "Robert Falcasantos",
           group: "Friends",
           subtitle: "Last Active a week ago",
-          avatar: srcs[5]
+          avatar: srcs[12]
         },
         {
           name: "Paula Correia",
           group: "Friends",
           subtitle: "Active",
-          avatar: srcs[5]
+          avatar: srcs[13]
         }
       ],
       peopletw: [
@@ -417,7 +434,7 @@ export default {
           avatar: srcs[2]
         },
         {
-          name: "Right Person - name to be decided",
+          name: "My Mum",
           group: "Friends",
           subtitle: "@tobedecided",
           avatar: srcs[3]
@@ -438,49 +455,49 @@ export default {
           name: "Sid Major",
           group: "Friends",
           subtitle: "@majorbullsclassof86",
-          avatar: srcs[5]
+          avatar: srcs[6]
         },
         {
           name: "Diego Clarke",
           group: "Friends",
           subtitle: "@diegoclarke",
-          avatar: srcs[5]
+          avatar: srcs[7]
         },
         {
           name: "Kai Maddox",
           group: "Friends",
           subtitle: "@kai_maddox",
-          avatar: srcs[5]
+          avatar: srcs[8]
         },
         {
           name: "Mark Almond",
           group: "Friends",
           subtitle: "@almond_mark",
-          avatar: srcs[5]
+          avatar: srcs[9]
         },
         {
           name: "Justin Goodwin",
           group: "Friends",
           subtitle: "goodalwayswins",
-          avatar: srcs[5]
+          avatar: srcs[10]
         },
         {
           name: "Lillian Burrows",
           group: "Friends",
           subtitle: "@lillianburrows",
-          avatar: srcs[5]
+          avatar: srcs[11]
         },
         {
           name: "Abiha Vincent",
           group: "Friends",
           subtitle: "abihamaryvincent",
-          avatar: srcs[5]
+          avatar: srcs[12]
         },
         {
           name: "Malakai Preece",
           group: "Friends",
           subtitle: "malakaipreece",
-          avatar: srcs[5]
+          avatar: srcs[13]
         }
       ]
     };
@@ -493,6 +510,11 @@ export default {
     }
   },
   methods: {
+    addPhoto(img, dialog) {
+      console.log("dodaje", img);
+      this.contact.imageurl = img;
+      dialog = false;
+    },
     hello() {
       console.log(this.searchString);
     },
@@ -500,8 +522,13 @@ export default {
       console.log(this.contact);
     },
     addContactToList: function() {
-      this.$store.commit("addContactToList", this.contact);
-      this.$router.push("/contacts");
+      if (this.contact.name) {
+        this.$store.commit("addContactToList", this.contact);
+        console.log(this.contact.imageurl);
+        this.$router.push("/loadingsoul/" + this.contact.name);
+      } else {
+        console.log("Add a name");
+      }
     }
   }
 };

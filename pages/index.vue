@@ -1,6 +1,6 @@
 <template class="ma-0 pa-0">
   <div class="ma-0 pa-0">
-    <transition name="fade">
+    <transition>
       <div v-show="elementVisible" class="popup justify-center">
         <div class="popupcontent">
           <v-img src="/media/images/soulify.GIF"> </v-img>
